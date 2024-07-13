@@ -263,12 +263,11 @@ export default function Home() {
       >
         <div className="max-w-xl lg:max-w-3xl">
           <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-            Welcome to my-Shop
+            Welcome to Mike&apos;s Dashboard
           </h1>
 
           <p className="mt-4 leading-relaxed text-gray-500 max-w-sm">
-            This website is only accessible to admins only. Add new products and
-            manage database.
+            From here you will be to add or delete products from your website. This site is only accessible to admin only. Do not share your login details!
           </p>
           <div className="col-span-6 sm:flex sm:items-center sm:gap-4 my-4 flex items-center justify-center">
             <button
