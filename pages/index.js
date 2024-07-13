@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import logo from "../public/logo.jpg";
 
 const formatPrice = (price) => {
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -86,7 +87,7 @@ export default function Home() {
                     </svg>
                   </Link>
                   <Link
-                    href={"https://my-shop-front-eclarkhalid.vercel.app/"}
+                    href={"https://mikekitchen.vercel.app"}
                     target="_blank"
                     className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-orange-500 px-5 py-3 text-orange-500 transition hover:bg-orange-50 hover:text-orange-700 focus:outline-none focus:ring"
                     type="button"
@@ -259,15 +260,22 @@ export default function Home() {
   return (
     <>
       <main
-        className={`flex min-h-screen flex-col items-center justify-center p-5 text-center `}
+        className={`flex min-h-screen flex-col items-center justify-center p-5 text-center`}
       >
-        <div className="max-w-xl lg:max-w-3xl">
+        <div className="max-w-xl lg:max-w-3xl text-center">
+          <img
+            src={logo}
+            alt="Mike's Kitchen Logo"
+            className="h-5 w-5 mx-auto"
+          />
           <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-            Welcome to Mike&apos;s Dashboard
+            Welcome to Mike&apos;s Kitchen Cabinet Dashboard
           </h1>
 
-          <p className="mt-4 leading-relaxed text-gray-500 max-w-sm">
-            From here you will be to add or delete products from your website. This site is only accessible to admin only. Do not share your login details!
+          <p className="mt-4 leading-relaxed text-gray-500 max-w-sm mx-auto">
+            From here you will be able to add or delete products from your
+            website. This site is only accessible to admin only. Do not share
+            your login details! Please Login by clicking the link below.
           </p>
           <div className="col-span-6 sm:flex sm:items-center sm:gap-4 my-4 flex items-center justify-center">
             <button
