@@ -1,7 +1,7 @@
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import img1 from '@/public/product.png'
+import img1 from "@/public/product.png";
 
 // Utility function to format price with a comma for thousands
 const formatPrice = (price) => {
@@ -16,8 +16,7 @@ export default function Product() {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    axios.get('/api/products').then(response => {
-
+    axios.get("/api/products").then((response) => {
       setProducts(response.data);
       setLoading(false);
     });
@@ -34,7 +33,7 @@ export default function Product() {
 
   const changePage = (page) => {
     setCurrentPage(page);
-    setLoading(false)
+    setLoading(false);
   };
 
   return (
@@ -53,12 +52,23 @@ export default function Product() {
 
             <div className="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center max-w-md">
               <Link
-                href={'/products/new'}
+                href={"/products/new"}
                 className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-green-600 px-5 py-3 text-green-600 transition hover:bg-green-50 hover:text-green-700 focus:outline-none focus:ring"
                 type="button"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
                 <span className="text-sm font-medium"> Add Product </span>
               </Link>
@@ -74,9 +84,7 @@ export default function Product() {
         ) : (
           <>
             <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-md border rounded">
-              <thead>
-                {/* Table headers here */}
-              </thead>
+              <thead>{/* Table headers here */}</thead>
               {productsToDisplay.map((product, index) => (
                 <tbody className="divide-y divide-gray-200" key={product._id}>
                   <tr>
@@ -84,27 +92,30 @@ export default function Product() {
                       {index + 1}
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 flex items-center  gap-1">
-                      <div class="h-10 w-10">
+                      <div className="h-10 w-10">
                         <img
-                          class="h-full w-full rounded-full object-cover object-center bg-gray-200"
+                          className="h-full w-full rounded-full object-cover object-center bg-gray-200"
                           src={product.images?.[0] || img1}
                           alt={product.title}
                         />
-
                       </div>
                       {product.title}
                     </td>
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-700 truncate max-w-md">{product.description}</td>
-                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">ZAR {formatPrice(product.price)}</td>
+                    <td className="whitespace-nowrap px-4 py-2 text-gray-700 truncate max-w-md">
+                      {product.description}
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                      ZAR {formatPrice(product.price)}
+                    </td>
                     <td className="whitespace-nowrap px-4 py-2 gap-4 flex">
                       <Link
-                        href={'/products/edit/' + product._id}
+                        href={"/products/edit/" + product._id}
                         className="inline-block rounded bg-green-500 px-4 py-2 text-xs font-medium text-white hover:bg-green-700"
                       >
                         Edit
                       </Link>
                       <Link
-                        href={'/products/delete/' + product._id}
+                        href={"/products/delete/" + product._id}
                         className="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white hover:bg-red-700"
                       >
                         Delete
@@ -122,10 +133,11 @@ export default function Product() {
                   <button
                     key={i}
                     onClick={() => changePage(i + 1)}
-                    className={`mx-2 px-3 py-2 rounded ${i + 1 === currentPage
-                        ? 'bg-blue-300 text-slate-900'
-                        : 'bg-gray-200 hover:bg-gray-300'
-                      }`}
+                    className={`mx-2 px-3 py-2 rounded ${
+                      i + 1 === currentPage
+                        ? "bg-blue-300 text-slate-900"
+                        : "bg-gray-200 hover:bg-gray-300"
+                    }`}
                   >
                     {i + 1}
                   </button>
