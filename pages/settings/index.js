@@ -1,15 +1,16 @@
-import { signOut, useSession } from "next-auth/react"
+
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { SignOutButton, useUser } from "@clerk/nextjs";
 
 export default function Settings() {
-  const { data: session } = useSession();
+  const {user} = useUser();
   const router = useRouter();
   async function logout() {
     await router.push('/');
-    await signOut();
+    
   }
-  if (session) {
+ 
     return (
       <div className="my-10 p-4">
         <div className="space-y-12">
@@ -30,7 +31,7 @@ export default function Settings() {
                     <input
                       type="text"
                       className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-md sm:leading-6"
-                      value={session.user.name}
+                      
                     />
                   </div>
                 </div>
@@ -50,11 +51,16 @@ export default function Settings() {
                 </label>
                 <div className="mt-2 flex items-center gap-x-3">
                   <div className="w-10 h-10">
-                    <Image class="h-full w-full rounded-full object-contain object-center" src={session.user.image} alt={session.user.email} width={34} height={34} />
+                    <Image className="h-full w-full rounded-full object-contain object-center" 
+                    src={user?.setProfileImage}
+                    alt={user?.fullName || user?.firstName || user?.lastName}   
+                    width={30}  
+                    height={30}                    
+                    />
                   </div>
 
                   <button
-                    type="button"
+                    type="file"
                     className="rounded-md bg-white px-2.5 py-1.5 text-md font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
                   >
                     Change
@@ -77,7 +83,7 @@ export default function Settings() {
                   <input
                     type="text"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-md sm:leading-6 pl-6"
-                    value={session.user.name.split(' ')[0]}
+                   
                   />
                 </div>
               </div>
@@ -90,7 +96,7 @@ export default function Settings() {
                   <input
                     type="text"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-md sm:leading-6 pl-6"
-                    value={session.user.name.split(' ')[1]}
+                 
                   />
                 </div>
               </div>
@@ -103,7 +109,7 @@ export default function Settings() {
                   <input
                     type="email"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-md sm:leading-6 pl-6"
-                    value={session.user.email}
+                   
                   />
                 </div>
               </div>
@@ -113,13 +119,14 @@ export default function Settings() {
 
         <div className="mt-6 flex items-center justify-end gap-x-6">
           <button
-            onClick={logout}
+            
             className="rounded-md bg-green-600 px-3 py-2 text-md font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
           >
-            Logout
+            
+            <SignOutButton />
           </button>
         </div>
       </div>
     )
   }
-}
+

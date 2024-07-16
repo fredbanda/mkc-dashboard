@@ -1,11 +1,12 @@
-import { useSession } from "next-auth/react";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
+
+
 export default function Header() {
-  const { data: session } = useSession();
   const router = useRouter();
   const { pathname } = router;
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -18,7 +19,6 @@ export default function Header() {
     "text-green-600 transition hover:text-green-500/75 p-3 rounded-md bg-gray-200";
   const inActive = "text-gray-500 transition hover:text-gray-500/75 p-3";
 
-  if (session) {
     return (
       <>
         <header className="bg-white z-30 top-0 sticky border-b border-zinc-200 mx-auto">
@@ -54,7 +54,7 @@ export default function Header() {
                     <li>
                       <Link
                         className={pathname === "/" ? active : inActive}
-                        href="/"
+                        href="/dashboard"
                       >
                         Dashboard
                       </Link>
@@ -102,13 +102,13 @@ export default function Header() {
                 <div className="flex items-center gap-4">
                   <div className="sm:flex sm:gap-4">
                     <div className="w-10 h-10">
-                      <Image
+                      {/* <Image
                         className="h-full w-full rounded-full object-contain object-center"
-                        src={session.user.image}
-                        alt={session.user.email}
+                        src={user.image}
+                        alt={user.email}
                         width={34}
                         height={34}
-                      />
+                      /> */}
                     </div>
                   </div>
 
@@ -224,4 +224,4 @@ export default function Header() {
       </>
     );
   }
-}
+
