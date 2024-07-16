@@ -5,6 +5,9 @@ import {
   
   const isProtectedRoute = createRouteMatcher([
     '/dashboard',
+    '/categories',
+    '/products',
+    '/orders',
     '/api(.*)',
   ]);
   
