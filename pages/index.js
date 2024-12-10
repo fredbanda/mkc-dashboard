@@ -12,14 +12,14 @@ export default function Home() {
       <div className="max-w-xl lg:max-w-3xl text-center">
         <Image
           className="mx-auto w-auto"
-          src="/logo.jpg"
-          alt="Mike's Kitchen Cabinets"
+          src="/logo.png"
+          alt="Tech Slayer"
           width={100}
           height={50}
           priority
         />
         <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-          Welcome to Mike&apos;s Kitchen Cabinets&apos; Dashboard
+          Welcome to Tech Slayer Dashboard
         </h1>
 
         <p className="mt-4 leading-relaxed text-gray-500 max-w-sm mx-auto">

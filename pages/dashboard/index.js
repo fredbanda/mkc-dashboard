@@ -47,7 +47,7 @@ const Dashboard = () => {
               </svg>
             </Link>
             <Link
-              href={"https://mikekitchen.vercel.app"}
+              href={"https://techslayer-dashboard.vercel.app"}
               target="_blank"
               className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-orange-500 px-5 py-3 text-orange-500 transition hover:bg-orange-50 hover:text-orange-700 focus:outline-none focus:ring"
               type="button"
